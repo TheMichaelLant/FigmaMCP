@@ -24,6 +24,23 @@ public static class WebExtensions
         builder.WebHost.UseQuic();
         builder.WebHost.UseKestrel();
 
+        // Allow CORS for specified origins
+        builder.Services.AddCors(options =>
+        {
+            options.AddDefaultPolicy(
+                policy =>
+                {
+                    policy
+                        .SetIsOriginAllowedToAllowWildcardSubdomains()
+                        .WithOrigins("https://*.dev.localhost:7065")
+                        .WithOrigins("https://*.dev.localhost:5173")
+                        .WithOrigins("https://*.dev.localhost:45173")
+                        .AllowAnyMethod()
+                        .AllowCredentials()
+                        .AllowAnyHeader();
+                });
+        });
+
         // Add Authentication and Authorization using Entra ID
         var tenantId = builder.Configuration["AzureAd:TenantId"];
         var clientId = builder.Configuration["AzureAd:ClientId"];
@@ -42,7 +59,8 @@ public static class WebExtensions
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidAudiences = [$"api://{clientId}"]
+                    ValidAudiences = [$"api://{clientId}"],
+                    ValidIssuers = [$"https://sts.windows.net/{tenantId}/", $"https://login.microsoftonline.com/{tenantId}/v2.0"]
                 };
             });
 
@@ -132,8 +150,9 @@ public static class WebExtensions
             });
         }
 
-        app.UseAuthorization();
+        app.UseCors();
         app.UseAuthentication();
+        app.UseAuthorization();
 
         app.MapControllers();
 

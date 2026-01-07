@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <!-- Generate OpenAPI Documentation During Build -->
-    <OpenApiDocumentsDirectory>.</OpenApiDocumentsDirectory>
+    <!-- Generate OpenAPI Documentation During Build for GitHub Copiot -->
+    <OpenApiDocumentsDirectory>../KEV.Hackathon.AspireDemo.Web.React/</OpenApiDocumentsDirectory>
   </PropertyGroup>
 
   <ItemGroup>
