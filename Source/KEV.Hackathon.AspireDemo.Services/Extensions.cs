@@ -95,7 +95,7 @@ public static class Extensions
 
     public static void AddConfiguration(this IHostApplicationBuilder builder)
     {
-        // Add Azure App Configuration if connection string is provided
+        // Add Azure App Configuration if configured
         var appConfigConnectionString = builder.Configuration.GetConnectionString("App-Config");
         var useAppConfig = !string.IsNullOrWhiteSpace(appConfigConnectionString);
 
@@ -115,11 +115,14 @@ public static class Extensions
     public static TBuilder AddStorageServices<TBuilder>(this TBuilder builder)
         where TBuilder : IHostApplicationBuilder
     {
-        // Add Azure Blob Storage Client and throw if connection string is not found
+        // Add Azure Blob Storage Client if configured
         var blobConnectionString = builder.Configuration.GetConnectionString("Blob-Store");
-        ArgumentNullException.ThrowIfNullOrWhiteSpace(blobConnectionString, "Connection string 'Blob-Store' not found.");
+        var useBlobStore = !string.IsNullOrWhiteSpace(blobConnectionString);
 
-        builder.AddAzureBlobServiceClient(connectionName: blobConnectionString);
+        if (useBlobStore)
+        {
+            builder.AddAzureBlobServiceClient(connectionName: "Blob-Store");
+        }
 
         return builder;
     }
