@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Build.targets" />
+    <File Path="Directory.Packages.props" />
+  </Folder>
+  <Project Path="Source/KEV.Hackathon.AspireDemo.Services/KEV.Hackathon.AspireDemo.Services.csproj" Id="6e5cdaf8-662b-44f2-a19f-7d7574cb8636" />
+  <Project Path="Source/KEV.Hackathon.AspireDemo.AppHost/KEV.Hackathon.AspireDemo.AppHost.csproj" Id="eb0b4abf-eec1-43ba-9da1-3f9f6dc7573c" />
+  <Project Path="Source/KEV.Hackathon.AspireDemo.Services.DemoAPI/KEV.Hackathon.AspireDemo.Services.DemoAPI.csproj" />
+</Solution>
