@@ -39,7 +39,7 @@ const FormInput: React.FC<FormInputProps> = ({
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-gray-500 hover:text-gray-700 flex items-center gap-1"
+            className="absolute right-3 top-[50%] -translate-y-[50%] text-sm text-gray-500 hover:text-gray-700 flex items-center gap-1"
           >
             <svg
               className="w-4 h-4"

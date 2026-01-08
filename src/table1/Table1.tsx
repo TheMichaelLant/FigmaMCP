@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./Table1.css";
 
 // Icon SVGs from Figma design
 const addIcon =
@@ -107,27 +106,27 @@ function Table1() {
   );
 
   return (
-    <div className="billing-container">
-      <div className="billing-content">
+    <div className="bg-white flex flex-col gap-8 px-10 py-16 rounded min-h-screen font-['Manrope']">
+      <div className="flex flex-col gap-10 w-full">
         {/* Header */}
-        <div className="header">
-          <div className="header-content">
-            <div className="title-section">
-              <h1 className="title">Billing</h1>
-              <p className="subtitle">
+        <div className="flex gap-8 items-center w-full relative">
+          <div className="flex w-full justify-between items-center">
+            <div className="flex flex-col gap-2 flex-1">
+              <h1 className="font-bold text-[30px] text-[#191d23]">Billing</h1>
+              <p className="font-normal text-lg text-[#64748b]">
                 Manage your billing and payment details
               </p>
             </div>
-            <div className="header-actions">
-              <button className="btn-primary">
-                <img src={addIcon} alt="Add" className="btn-icon" />
-                <img src={addIconPlus} alt="Plus" className="btn-icon" />
+            <div className="flex gap-3 items-start">
+              <button className="bg-emerald-700 border-none flex gap-2.5 h-11 items-center justify-center px-4 py-2 rounded text-white font-semibold text-base cursor-pointer transition-colors hover:bg-emerald-900">
+                <img src={addIcon} alt="Add" className="w-4 h-4 object-contain" />
+                <img src={addIconPlus} alt="Plus" className="w-4 h-4 object-contain" />
                 <span>Add</span>
               </button>
-              <button className="btn-secondary">
-                <img src={downloadIcon} alt="Download" className="btn-icon" />
-                <img src={downloadIcon2} alt="Download" className="btn-icon" />
-                <img src={downloadIcon3} alt="Download" className="btn-icon" />
+              <button className="border-[1.5px] border-[#d0d5dd] bg-white flex gap-2.5 h-11 items-center justify-center px-3 py-2 rounded text-[#191d23] font-semibold text-base cursor-pointer transition-colors hover:border-[#b8c0cc]">
+                <img src={downloadIcon} alt="Download" className="w-4 h-4 object-contain" />
+                <img src={downloadIcon2} alt="Download" className="w-4 h-4 object-contain" />
+                <img src={downloadIcon3} alt="Download" className="w-4 h-4 object-contain" />
                 <span>Download PDF Report</span>
               </button>
             </div>
@@ -135,109 +134,119 @@ function Table1() {
         </div>
 
         {/* Tabs */}
-        <div className="tabs-container">
-          <div className="tabs">
+        <div className="relative w-[323px]">
+          <div className="flex w-full">
             <button
-              className={`tab ${activeTab === "Overview" ? "tab-active" : ""}`}
+              className={`flex-1 flex items-center justify-center p-2 bg-transparent border-none text-base text-center cursor-pointer transition-all ${
+                activeTab === "Overview" ? "font-semibold text-[#191d23]" : "font-normal text-[#191d23]"
+              }`}
               onClick={() => setActiveTab("Overview")}
             >
               Overview
             </button>
             <button
-              className={`tab ${activeTab === "Segments" ? "tab-active" : ""}`}
+              className={`flex-1 flex items-center justify-center p-2 bg-transparent border-none text-base text-center cursor-pointer transition-all ${
+                activeTab === "Segments" ? "font-semibold text-[#191d23]" : "font-normal text-[#191d23]"
+              }`}
               onClick={() => setActiveTab("Segments")}
             >
               Segments
             </button>
             <button
-              className={`tab ${activeTab === "Dashboard" ? "tab-active" : ""}`}
+              className={`flex-1 flex items-center justify-center p-2 bg-transparent border-none text-base text-center cursor-pointer transition-all ${
+                activeTab === "Dashboard" ? "font-semibold text-[#191d23]" : "font-normal text-[#191d23]"
+              }`}
               onClick={() => setActiveTab("Dashboard")}
             >
               Dashboard
             </button>
           </div>
-          <div className="tab-indicator"></div>
+          <div className="absolute -bottom-0.5 left-0 w-[108px] h-0.5 bg-[#191d23] transition-all duration-300"></div>
         </div>
       </div>
 
       {/* Search and Filter Bar */}
-      <div className="search-filter-bar">
-        <div className="search-container">
-          <img src={searchIcon} alt="Search" className="search-icon" />
+      <div className="bg-[#f7f8f9] flex items-start justify-between p-3 rounded w-full">
+        <div className="bg-white border border-[#e7eaee] flex gap-2 h-10 items-center p-2 rounded w-[425px]">
+          <img src={searchIcon} alt="Search" className="w-4 h-4 object-contain" />
           <input
             type="text"
             placeholder="Search by invoice number, name, amount..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="search-input"
+            className="flex-1 border-none outline-none font-normal text-[15px] text-[#191d23] bg-transparent placeholder:text-[#64748b]"
           />
         </div>
-        <button className="filter-btn">
-          <img src={filterIcon} alt="Filter" className="filter-icon" />
+        <button className="bg-white border-none flex gap-2.5 h-10 items-center justify-center px-4 py-2 rounded text-[#64748b] font-semibold text-base cursor-pointer transition-colors hover:bg-[#f7f8f9]">
+          <img src={filterIcon} alt="Filter" className="w-4 h-4 object-contain" />
           <span>Filter</span>
         </button>
       </div>
 
       {/* Table */}
-      <div className="table-container">
-        <div className="table">
+      <div className="bg-white rounded flex-1 w-full overflow-hidden">
+        <div className="flex flex-col h-full w-full">
           {/* Table Header */}
-          <div className="table-header">
-            <div className="header-cell invoice-number">
+          <div className="grid grid-cols-[244px_1fr_1fr_1fr_1fr_1fr] border-b border-[#e7eaee] h-[59.33px]">
+            <div className="flex items-center p-2 font-semibold text-sm text-[#64748b]">
               <span>INVOICE NUMBER</span>
             </div>
-            <div className="header-cell vendor">
+            <div className="flex items-center p-2 font-semibold text-sm text-[#64748b]">
               <span>VENDOR</span>
             </div>
-            <div className="header-cell billing-date">
+            <div className="flex items-center p-2 gap-1 font-semibold text-sm text-[#64748b]">
               <span>BILLING DATE</span>
-              <img src={sortIcon} alt="Sort" className="sort-icon" />
+              <img src={sortIcon} alt="Sort" className="w-4 h-4 object-contain rotate-180" />
             </div>
-            <div className="header-cell status">
+            <div className="flex items-center p-2 font-semibold text-sm text-[#64748b]">
               <span>STATUS</span>
             </div>
-            <div className="header-cell amount">
+            <div className="flex items-center p-2 font-semibold text-sm text-[#64748b]">
               <span>AMOUNT</span>
             </div>
-            <div className="header-cell action"></div>
+            <div className="flex items-center p-2 font-semibold text-sm text-[#64748b]"></div>
           </div>
 
           {/* Table Rows */}
           {filteredInvoices.map((invoice) => (
-            <div key={invoice.id} className="table-row">
-              <div className="table-cell invoice-number">
-                <div className="checkbox-container">
+            <div key={invoice.id} className="grid grid-cols-[244px_1fr_1fr_1fr_1fr_1fr] bg-white border-b border-[#e7eaee] min-h-[60px]">
+              <div className="flex items-center px-2 py-4 font-normal text-base text-[#191d23]">
+                <div className="flex gap-2 items-center w-[140px]">
                   <input
                     type="checkbox"
                     checked={selectedInvoices.includes(invoice.id)}
                     onChange={() => handleCheckboxChange(invoice.id)}
-                    className="checkbox"
+                    className="w-4 h-4 border-2 border-[rgba(4,9,33,0.32)] rounded-sm bg-white cursor-pointer accent-emerald-700"
                   />
-                  <span className="invoice-text">{invoice.id}</span>
+                  <span className="overflow-hidden text-ellipsis whitespace-nowrap max-w-[121px]">{invoice.id}</span>
                 </div>
               </div>
-              <div className="table-cell vendor">
+              <div className="flex items-center px-2 py-4 font-normal text-base text-[#191d23]">
                 <span>{invoice.vendor}</span>
               </div>
-              <div className="table-cell billing-date">
+              <div className="flex items-center px-2 py-4 font-normal text-base text-[#191d23]">
                 <span>{invoice.billingDate}</span>
               </div>
-              <div className="table-cell status">
+              <div className="flex items-center px-2 py-4 font-normal text-base text-[#191d23]">
                 <span
-                  className={`status-badge ${invoice.status.toLowerCase()}`}
+                  className={`px-2.5 py-0.5 rounded font-semibold text-[13px] text-center ${
+                    invoice.status === "Paid"
+                      ? "bg-emerald-50 text-emerald-900"
+                      : "bg-red-50 text-red-800"
+                  }`}
                 >
                   {invoice.status}
                 </span>
               </div>
-              <div className="table-cell amount">
-                <span className="amount-text">{invoice.amount}</span>
+              <div className="flex items-center px-2 py-4 font-semibold text-base text-[#191d23]">
+                <span>{invoice.amount}</span>
               </div>
-              <div className="table-cell action">
+              <div className="flex items-center px-2 py-4 font-normal text-base text-[#191d23]">
                 <button
-                  className={`pay-btn ${
+                  className={`h-9 px-8 rounded border-none font-normal text-base cursor-pointer transition-all ${
                     invoice.status === "Unpaid"
-                      ? "pay-btn-active"
-                      : "pay-btn-disabled"
+                      ? "bg-emerald-700 text-white hover:bg-emerald-900"
+                      : "bg-[#e7eaee] text-[#64748b] cursor-not-allowed"
                   }`}
                 >
                   Pay

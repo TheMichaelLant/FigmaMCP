@@ -37,15 +37,9 @@ const Demo4: React.FC = () => {
         <div className="flex justify-center mb-6">
           <div className="w-12 h-12 bg-gray-300 rounded-full"></div>
         </div>
-
-        {/* Heading */}
-        <h1 className="text-center text-xl font-semibold text-gray-900 mb-8">
-          Sign up for free to start live-streaming
-        </h1>
-
         <form onSubmit={handleSubmit}>
           {/* Social Login Buttons */}
-          <div className="space-y-3 mb-6">
+          <div className="flex flex-col gap-3 mb-6">
             <SocialButton
               provider="facebook"
               onClick={() => handleSocialLogin("facebook")}
@@ -75,7 +69,7 @@ const Demo4: React.FC = () => {
             Sign up with your email address
           </h2>
 
-          <div className="space-y-5">
+          <div className="flex flex-col gap-5">
             <FormInput
               label="Profile name"
               type="text"

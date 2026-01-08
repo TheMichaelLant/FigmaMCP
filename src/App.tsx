@@ -1,5 +1,5 @@
 import { Link, Route, Routes } from "react-router-dom";
-import "./App.css";
+
 import Table1 from "./table1/Table1";
 import Table2 from "./table2/Table2";
 import Table3 from "./table3/Table3";
