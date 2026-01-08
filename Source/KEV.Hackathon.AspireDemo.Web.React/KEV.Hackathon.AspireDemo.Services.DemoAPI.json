@@ -87,9 +87,9 @@
             "authorizationUrl": "https://login.microsoftonline.com//oauth2/v2.0/authorize",
             "tokenUrl": "https://login.microsoftonline.com//oauth2/v2.0/token",
             "scopes": {
-              "openid": "Access the OpenID Connect user profile",
-              "email": "Access the user's email address",
-              "profile": "Access the user's profile"
+              "api:///access_as_user": "Access the API",
+              "openid": "Identity Claims",
+              "profile": "User profile information"
             }
           }
         }
@@ -99,10 +99,8 @@
   "security": [
     {
       "oauth2": [
-        "api",
-        "profile",
-        "email",
-        "openid"
+        "api:///access_as_user",
+        "Access the API"
       ]
     }
   ],

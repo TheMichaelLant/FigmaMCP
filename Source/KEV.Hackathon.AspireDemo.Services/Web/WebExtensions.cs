@@ -43,7 +43,7 @@ public static class WebExtensions
 
         // Add Authentication and Authorization using Entra ID
         var tenantId = builder.Configuration["AzureAd:TenantId"];
-        var clientId = builder.Configuration["AzureAd:ClientId"];
+        var apiClientId = builder.Configuration["AzureAd:ApiClientId"];
 
         builder.Services.AddAuthorization();
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -51,7 +51,6 @@ public static class WebExtensions
             {
                 // Entra ID's well-known metadata endpoint - automatically retrieves signing keys
                 options.Authority = $"https://login.microsoftonline.com/{tenantId}/v2.0";
-                options.Audience = clientId;
 
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
@@ -59,7 +58,7 @@ public static class WebExtensions
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidAudiences = [$"api://{clientId}"],
+                    ValidAudiences = [$"api://{apiClientId}"],
                     ValidIssuers = [$"https://sts.windows.net/{tenantId}/", $"https://login.microsoftonline.com/{tenantId}/v2.0"]
                 };
             });
@@ -77,8 +76,6 @@ public static class WebExtensions
 
             options.AddDocumentTransformer((document, context, cancellationToken) =>
             {
-                var tenantId = builder.Configuration["AzureAd:TenantId"];
-
                 // Ensure instances exist
                 document.Components ??= new OpenApiComponents();
                 document.Components.SecuritySchemes ??= new Dictionary<string, IOpenApiSecurityScheme>();
@@ -94,9 +91,9 @@ public static class WebExtensions
                             TokenUrl = new Uri($"https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token"),
                             Scopes = new Dictionary<string, string>
                             {
-                                { "openid", "Access the OpenID Connect user profile" },
-                                { "email", "Access the user's email address" },
-                                { "profile", "Access the user's profile" }
+                                { $"api://{apiClientId}/access_as_user", "Access the API" },
+                                { "openid", "Identity Claims" },
+                                { "profile", "User profile information" },
                             }
                         }
                     }
@@ -107,7 +104,7 @@ public static class WebExtensions
                     {
                         {
                             new OpenApiSecuritySchemeReference("oauth2"),
-                            ["api", "profile", "email", "openid"]
+                            [$"api://{apiClientId}/access_as_user", "Access the API"]
                         }
                     }
                 ];
@@ -131,7 +128,8 @@ public static class WebExtensions
             app.MapScalarApiReference(options =>
             {
                 var tenantId = app.Configuration["AzureAd:TenantId"];
-                var clientId = app.Configuration["AzureAd:ClientId"];
+                var apiClientId = app.Configuration["AzureAd:ApiClientId"];
+                var spaClientId = app.Configuration["AzureAd:SpaClientId"];
 
                 options
                     .EnablePersistentAuthentication()
@@ -141,9 +139,9 @@ public static class WebExtensions
                         // No client secret needed - uses PKCE for secure authorization code flow
                         flow.AuthorizationUrl = $"https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/authorize";
                         flow.TokenUrl = $"https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token";
-                        flow.ClientId = clientId;
+                        flow.ClientId = spaClientId;
                         flow.Pkce = Pkce.Sha256;
-                        flow.SelectedScopes = ["openid", "email", "profile"];
+                        flow.SelectedScopes = [$"api://{apiClientId}/access_as_user", "openid", "profile"];
                     })
 
                     .AddPreferredSecuritySchemes("oauth2");
