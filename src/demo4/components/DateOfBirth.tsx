@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface DateOfBirthProps {
   month: string;
@@ -15,11 +15,21 @@ const DateOfBirth: React.FC<DateOfBirthProps> = ({
   year,
   onMonthChange,
   onDateChange,
-  onYearChange
+  onYearChange,
 }) => {
   const months = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
 
   const dates = Array.from({ length: 31 }, (_, i) => i + 1);

@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import SocialButton from './components/SocialButton';
-import FormInput from './components/FormInput';
-import GenderSelector from './components/GenderSelector';
-import DateOfBirth from './components/DateOfBirth';
+import React, { useState } from "react";
+import SocialButton from "./components/SocialButton";
+import FormInput from "./components/FormInput";
+import GenderSelector from "./components/GenderSelector";
+import DateOfBirth from "./components/DateOfBirth";
 
 const Demo4: React.FC = () => {
-  const [profileName, setProfileName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [gender, setGender] = useState('');
-  const [month, setMonth] = useState('');
-  const [date, setDate] = useState('');
-  const [year, setYear] = useState('');
+  const [profileName, setProfileName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [gender, setGender] = useState("");
+  const [month, setMonth] = useState("");
+  const [date, setDate] = useState("");
+  const [year, setYear] = useState("");
   const [marketingConsent, setMarketingConsent] = useState(false);
 
   const handleSocialLogin = (provider: string) => {
@@ -26,7 +26,7 @@ const Demo4: React.FC = () => {
       password,
       gender,
       dateOfBirth: { month, date, year },
-      marketingConsent
+      marketingConsent,
     });
   };
 
@@ -48,15 +48,15 @@ const Demo4: React.FC = () => {
           <div className="space-y-3 mb-6">
             <SocialButton
               provider="facebook"
-              onClick={() => handleSocialLogin('facebook')}
+              onClick={() => handleSocialLogin("facebook")}
             />
             <SocialButton
               provider="google"
-              onClick={() => handleSocialLogin('google')}
+              onClick={() => handleSocialLogin("google")}
             />
             <SocialButton
               provider="twitter"
-              onClick={() => handleSocialLogin('twitter')}
+              onClick={() => handleSocialLogin("twitter")}
             />
           </div>
 
@@ -123,17 +123,18 @@ const Demo4: React.FC = () => {
                 className="w-4 h-4 mt-1 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
               />
               <label htmlFor="marketing" className="ml-3 text-sm text-gray-600">
-                Share my registration data with our content providers for marketing purposes.
+                Share my registration data with our content providers for
+                marketing purposes.
               </label>
             </div>
 
             {/* Terms */}
             <p className="text-xs text-center text-gray-600">
-              By creating an account, you agree to the{' '}
+              By creating an account, you agree to the{" "}
               <a href="#" className="text-blue-600 underline">
                 Terms of use
-              </a>{' '}
-              and{' '}
+              </a>{" "}
+              and{" "}
               <a href="#" className="text-blue-600 underline">
                 Privacy Policy
               </a>
@@ -152,9 +153,12 @@ const Demo4: React.FC = () => {
               </label>
               <div className="ml-auto">
                 <svg className="w-10 h-10" viewBox="0 0 256 256">
-                  <rect width="256" height="256" fill="#4285F4" rx="8"/>
-                  <path fill="#fff" d="M128 40c-48.6 0-88 39.4-88 88s39.4 88 88 88 88-39.4 88-88-39.4-88-88-88zm0 160c-39.7 0-72-32.3-72-72s32.3-72 72-72 72 32.3 72 72-32.3 72-72 72z"/>
-                  <circle cx="128" cy="128" r="36" fill="#fff"/>
+                  <rect width="256" height="256" fill="#4285F4" rx="8" />
+                  <path
+                    fill="#fff"
+                    d="M128 40c-48.6 0-88 39.4-88 88s39.4 88 88 88 88-39.4 88-88-39.4-88-88-88zm0 160c-39.7 0-72-32.3-72-72s32.3-72 72-72 72 32.3 72 72-32.3 72-72 72z"
+                  />
+                  <circle cx="128" cy="128" r="36" fill="#fff" />
                 </svg>
               </div>
             </div>
@@ -169,7 +173,7 @@ const Demo4: React.FC = () => {
 
             {/* Login Link */}
             <p className="text-center text-sm text-gray-600">
-              Already have an account?{' '}
+              Already have an account?{" "}
               <a href="#" className="text-blue-600 underline">
                 Log in
               </a>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface GenderSelectorProps {
   value: string;
@@ -7,9 +7,9 @@ interface GenderSelectorProps {
 
 const GenderSelector: React.FC<GenderSelectorProps> = ({ value, onChange }) => {
   const options = [
-    { value: 'female', label: 'Female' },
-    { value: 'male', label: 'Male' },
-    { value: 'non-binary', label: 'Non-binary' }
+    { value: "female", label: "Female" },
+    { value: "male", label: "Male" },
+    { value: "non-binary", label: "Non-binary" },
   ];
 
   return (
