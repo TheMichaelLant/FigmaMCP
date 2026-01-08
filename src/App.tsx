@@ -3,12 +3,14 @@ import Table1 from "./table1/Table1";
 
 function Home() {
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>Component Demos</h1>
+    <div className="p-8">
+      <h1 className="text-2xl font-bold mb-4">Component Demos</h1>
       <nav>
         <ul>
           <li>
-            <Link to="/table1">Table 1</Link>
+            <Link to="/table1" className="text-blue-600 hover:underline">
+              Table 1
+            </Link>
           </li>
         </ul>
       </nav>
