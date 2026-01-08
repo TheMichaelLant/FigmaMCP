@@ -119,14 +119,34 @@ function Table1() {
             </div>
             <div className="flex gap-3 items-start">
               <button className="bg-emerald-700 border-none flex gap-2.5 h-11 items-center justify-center px-4 py-2 rounded text-white font-semibold text-base cursor-pointer transition-colors hover:bg-emerald-900">
-                <img src={addIcon} alt="Add" className="w-4 h-4 object-contain" />
-                <img src={addIconPlus} alt="Plus" className="w-4 h-4 object-contain" />
+                <img
+                  src={addIcon}
+                  alt="Add"
+                  className="w-4 h-4 object-contain"
+                />
+                <img
+                  src={addIconPlus}
+                  alt="Plus"
+                  className="w-4 h-4 object-contain"
+                />
                 <span>Add</span>
               </button>
               <button className="border-[1.5px] border-[#d0d5dd] bg-white flex gap-2.5 h-11 items-center justify-center px-3 py-2 rounded text-[#191d23] font-semibold text-base cursor-pointer transition-colors hover:border-[#b8c0cc]">
-                <img src={downloadIcon} alt="Download" className="w-4 h-4 object-contain" />
-                <img src={downloadIcon2} alt="Download" className="w-4 h-4 object-contain" />
-                <img src={downloadIcon3} alt="Download" className="w-4 h-4 object-contain" />
+                <img
+                  src={downloadIcon}
+                  alt="Download"
+                  className="w-4 h-4 object-contain"
+                />
+                <img
+                  src={downloadIcon2}
+                  alt="Download"
+                  className="w-4 h-4 object-contain"
+                />
+                <img
+                  src={downloadIcon3}
+                  alt="Download"
+                  className="w-4 h-4 object-contain"
+                />
                 <span>Download PDF Report</span>
               </button>
             </div>
@@ -138,7 +158,9 @@ function Table1() {
           <div className="flex w-full">
             <button
               className={`flex-1 flex items-center justify-center p-2 bg-transparent border-none text-base text-center cursor-pointer transition-all ${
-                activeTab === "Overview" ? "font-semibold text-[#191d23]" : "font-normal text-[#191d23]"
+                activeTab === "Overview"
+                  ? "font-semibold text-[#191d23]"
+                  : "font-normal text-[#191d23]"
               }`}
               onClick={() => setActiveTab("Overview")}
             >
@@ -146,7 +168,9 @@ function Table1() {
             </button>
             <button
               className={`flex-1 flex items-center justify-center p-2 bg-transparent border-none text-base text-center cursor-pointer transition-all ${
-                activeTab === "Segments" ? "font-semibold text-[#191d23]" : "font-normal text-[#191d23]"
+                activeTab === "Segments"
+                  ? "font-semibold text-[#191d23]"
+                  : "font-normal text-[#191d23]"
               }`}
               onClick={() => setActiveTab("Segments")}
             >
@@ -154,7 +178,9 @@ function Table1() {
             </button>
             <button
               className={`flex-1 flex items-center justify-center p-2 bg-transparent border-none text-base text-center cursor-pointer transition-all ${
-                activeTab === "Dashboard" ? "font-semibold text-[#191d23]" : "font-normal text-[#191d23]"
+                activeTab === "Dashboard"
+                  ? "font-semibold text-[#191d23]"
+                  : "font-normal text-[#191d23]"
               }`}
               onClick={() => setActiveTab("Dashboard")}
             >
@@ -168,7 +194,11 @@ function Table1() {
       {/* Search and Filter Bar */}
       <div className="bg-[#f7f8f9] flex items-start justify-between p-3 rounded w-full">
         <div className="bg-white border border-[#e7eaee] flex gap-2 h-10 items-center p-2 rounded w-[425px]">
-          <img src={searchIcon} alt="Search" className="w-4 h-4 object-contain" />
+          <img
+            src={searchIcon}
+            alt="Search"
+            className="w-4 h-4 object-contain"
+          />
           <input
             type="text"
             placeholder="Search by invoice number, name, amount..."
@@ -178,7 +208,11 @@ function Table1() {
           />
         </div>
         <button className="bg-white border-none flex gap-2.5 h-10 items-center justify-center px-4 py-2 rounded text-[#64748b] font-semibold text-base cursor-pointer transition-colors hover:bg-[#f7f8f9]">
-          <img src={filterIcon} alt="Filter" className="w-4 h-4 object-contain" />
+          <img
+            src={filterIcon}
+            alt="Filter"
+            className="w-4 h-4 object-contain"
+          />
           <span>Filter</span>
         </button>
       </div>
@@ -196,7 +230,11 @@ function Table1() {
             </div>
             <div className="flex items-center p-2 gap-1 font-semibold text-sm text-[#64748b]">
               <span>BILLING DATE</span>
-              <img src={sortIcon} alt="Sort" className="w-4 h-4 object-contain rotate-180" />
+              <img
+                src={sortIcon}
+                alt="Sort"
+                className="w-4 h-4 object-contain rotate-180"
+              />
             </div>
             <div className="flex items-center p-2 font-semibold text-sm text-[#64748b]">
               <span>STATUS</span>
@@ -209,7 +247,10 @@ function Table1() {
 
           {/* Table Rows */}
           {filteredInvoices.map((invoice) => (
-            <div key={invoice.id} className="grid grid-cols-[244px_1fr_1fr_1fr_1fr_1fr] bg-white border-b border-[#e7eaee] min-h-[60px]">
+            <div
+              key={invoice.id}
+              className="grid grid-cols-[244px_1fr_1fr_1fr_1fr_1fr] bg-white border-b border-[#e7eaee] min-h-[60px]"
+            >
               <div className="flex items-center px-2 py-4 font-normal text-base text-[#191d23]">
                 <div className="flex gap-2 items-center w-[140px]">
                   <input
@@ -218,7 +259,9 @@ function Table1() {
                     onChange={() => handleCheckboxChange(invoice.id)}
                     className="w-4 h-4 border-2 border-[rgba(4,9,33,0.32)] rounded-sm bg-white cursor-pointer accent-emerald-700"
                   />
-                  <span className="overflow-hidden text-ellipsis whitespace-nowrap max-w-[121px]">{invoice.id}</span>
+                  <span className="overflow-hidden text-ellipsis whitespace-nowrap max-w-[121px]">
+                    {invoice.id}
+                  </span>
                 </div>
               </div>
               <div className="flex items-center px-2 py-4 font-normal text-base text-[#191d23]">
