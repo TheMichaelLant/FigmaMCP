@@ -1,5 +1,6 @@
 import { Link, Route, Routes } from "react-router-dom";
 import Table1 from "./table1/Table1";
+import Table2Wrapper from "./table2/Table2Wrapper";
 
 function Home() {
   return (
@@ -16,7 +17,10 @@ function Home() {
               and daisyUI
             </p>
             <Link to="/table1" className="btn btn-accent btn-lg">
-              Get Started
+              Iteration 1
+            </Link>
+            <Link to="/table2" className="btn btn-primary btn-lg ml-4">
+              Iteration 2
             </Link>
           </div>
         </div>
@@ -47,14 +51,75 @@ function Home() {
                     d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
                   />
                 </svg>
-                Table Component
+                Table 1 (CSS)
               </h2>
               <p>
-                A powerful data table with sorting, filtering, and pagination
-                capabilities.
+                Custom CSS implementation with sorting, filtering, and custom
+                styling.
               </p>
               <div className="card-actions justify-end mt-4">
                 <Link to="/table1" className="btn btn-primary">
+                  View Demo
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Table 2 Card */}
+          <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow">
+            <div className="card-body">
+              <h2 className="card-title">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+                  />
+                </svg>
+                Table 2 (AG Grid)
+              </h2>
+              <p>
+                Modern implementation with AG Grid, Tailwind, and DaisyUI
+                components.
+              </p>
+              <div className="card-actions justify-end mt-4">
+                <Link to="/table2" className="btn btn-primary">
+                  View Demo
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Wrapper 2 Card */}
+          <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow">
+            <div className="card-body">
+              <h2 className="card-title">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+                Wrapper 2
+              </h2>
+              <p>Alternative wrapper implementation with enhanced features.</p>
+              <div className="card-actions justify-end mt-4">
+                <Link to="/wrapper2" className="btn btn-primary">
                   View Demo
                 </Link>
               </div>
@@ -132,6 +197,8 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/table1" element={<Table1 />} />
+      <Route path="/table2" element={<Table2Wrapper />} />
+      <Route path="/wrapper2" element={<Table2Wrapper />} />
     </Routes>
   );
 }
