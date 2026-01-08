@@ -1,8 +1,0 @@
-<Project>
-  <ItemGroup>
-    <Content Remove="packages.lock.json" />      
-    <None Include="packages.lock.json">
-      <Visible>false</Visible>
-    </None>
-  </ItemGroup>  
-</Project>

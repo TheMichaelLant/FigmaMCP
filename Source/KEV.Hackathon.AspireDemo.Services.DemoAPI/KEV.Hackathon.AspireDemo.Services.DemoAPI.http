@@ -1,6 +1,0 @@
-@KEV.Hackathon.AspireDemo.Services.DemoAPI_HostAddress = http://localhost:5103
-
-GET {{KEV.Hackathon.AspireDemo.Services.DemoAPI_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
