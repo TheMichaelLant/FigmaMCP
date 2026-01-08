@@ -2,6 +2,7 @@ import { Link, Route, Routes } from "react-router-dom";
 import Table1 from "./table1/Table1";
 import Table2 from "./table2/Table2";
 import Table3 from "./table3/Table3";
+import Demo4 from "./demo4";
 
 function Home() {
   return (
@@ -29,6 +30,9 @@ function Home() {
               <Link to="/table3" className="btn btn-secondary btn-lg">
                 Table 3 - Split Layout
               </Link>
+              <Link to="/demo4" className="btn btn-info btn-lg">
+                Demo 4 - Auth Form
+              </Link>
             </div>
           </div>
         </div>
@@ -44,6 +48,7 @@ function App() {
       <Route path="/table1" element={<Table1 />} />
       <Route path="/table2" element={<Table2 />} />
       <Route path="/table3" element={<Table3 />} />
+      <Route path="/demo4" element={<Demo4 />} />
     </Routes>
   );
 }
