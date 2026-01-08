@@ -1,5 +1,5 @@
-import React from 'react';
-import type { InvoiceData } from '../../table2/types';
+import React from "react";
+import type { InvoiceData } from "../../table2/types";
 
 interface PayBillsSidebarProps {
   className?: string;
@@ -7,12 +7,15 @@ interface PayBillsSidebarProps {
   onPaySelected?: () => void;
 }
 
-const PayBillsSidebar: React.FC<PayBillsSidebarProps> = ({ 
+const PayBillsSidebar: React.FC<PayBillsSidebarProps> = ({
   className = "",
   selectedInvoices = [],
-  onPaySelected
+  onPaySelected,
 }) => {
-  const totalAmount = selectedInvoices.reduce((sum, invoice) => sum + invoice.amount, 0);
+  const totalAmount = selectedInvoices.reduce(
+    (sum, invoice) => sum + invoice.amount,
+    0
+  );
   const hasSelection = selectedInvoices.length > 0;
 
   return (
@@ -20,7 +23,7 @@ const PayBillsSidebar: React.FC<PayBillsSidebarProps> = ({
       <h2 className="text-2xl font-semibold text-gray-800 text-center mb-8">
         Pay your bills
       </h2>
-      
+
       {hasSelection ? (
         <div className="space-y-6">
           {/* Selected invoices summary */}
@@ -68,8 +71,18 @@ const PayBillsSidebar: React.FC<PayBillsSidebarProps> = ({
       ) : (
         <div className="flex flex-col items-center justify-center h-64 text-gray-500">
           <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-            <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+            <svg
+              className="w-8 h-8 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
+              />
             </svg>
           </div>
           <p className="text-center text-sm">

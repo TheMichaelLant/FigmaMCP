@@ -1,40 +1,43 @@
-import React, { useState, useMemo } from 'react';
-import type { InvoiceData } from '../table2/types';
-import { mockInvoiceData } from '../table2/types';
-import BillingHeader from '../table2/components/BillingHeader';
-import BillingTabs from '../table2/components/BillingTabs';
-import SearchFilterBar from '../table2/components/SearchFilterBar';
-import BillingTable from '../table2/components/BillingTable';
-import PayBillsSidebar from './components/PayBillsSidebar';
-import '../table2/Table2.css';
+import React, { useState, useMemo } from "react";
+import type { InvoiceData } from "../table2/types";
+import { mockInvoiceData } from "../table2/types";
+import BillingHeader from "../table2/components/BillingHeader";
+import BillingTabs from "../table2/components/BillingTabs";
+import SearchFilterBar from "../table2/components/SearchFilterBar";
+import BillingTable from "../table2/components/BillingTable";
+import PayBillsSidebar from "./components/PayBillsSidebar";
+import "../table2/Table2.css";
 
 interface Table3Props {
   data?: InvoiceData[];
 }
 
 const Table3: React.FC<Table3Props> = ({ data = mockInvoiceData }) => {
-  const [activeTab, setActiveTab] = useState('overview');
-  const [searchTerm, setSearchTerm] = useState('');
+  const [activeTab, setActiveTab] = useState("overview");
+  const [searchTerm, setSearchTerm] = useState("");
   const [selectedRows, setSelectedRows] = useState<InvoiceData[]>([]);
 
   // Filter data based on search term
   const filteredData = useMemo(() => {
     if (!searchTerm) return data;
-    
-    return data.filter(invoice =>
-      invoice.invoiceNumber.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      invoice.vendor.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      invoice.amount.toString().includes(searchTerm)
+
+    return data.filter(
+      (invoice) =>
+        invoice.invoiceNumber
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
+        invoice.vendor.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        invoice.amount.toString().includes(searchTerm)
     );
   }, [data, searchTerm]);
 
   const handleAddClick = () => {
-    console.log('Add button clicked');
+    console.log("Add button clicked");
     // Add your logic here
   };
 
   const handleDownloadClick = () => {
-    console.log('Download PDF Report clicked');
+    console.log("Download PDF Report clicked");
     // Add your logic here
   };
 
@@ -47,25 +50,31 @@ const Table3: React.FC<Table3Props> = ({ data = mockInvoiceData }) => {
   };
 
   const handleFilterClick = () => {
-    console.log('Filter button clicked');
+    console.log("Filter button clicked");
     // Add your filter logic here
   };
 
   const handleRowSelectionChanged = (selectedData: InvoiceData[]) => {
     setSelectedRows(selectedData);
-    console.log('Selected rows:', selectedData);
+    console.log("Selected rows:", selectedData);
   };
 
   const handlePayClick = (invoiceData: InvoiceData) => {
-    console.log('Pay clicked for invoice:', invoiceData.invoiceNumber);
+    console.log("Pay clicked for invoice:", invoiceData.invoiceNumber);
     // Add your payment logic here
   };
 
   const handlePaySelected = () => {
     if (selectedRows.length > 0) {
-      console.log('Paying selected invoices:', selectedRows);
+      console.log("Paying selected invoices:", selectedRows);
       // Add bulk payment logic here
-      alert(`Processing payment for ${selectedRows.length} invoices totaling $${selectedRows.reduce((sum, row) => sum + row.amount, 0).toFixed(2)}`);
+      alert(
+        `Processing payment for ${
+          selectedRows.length
+        } invoices totaling $${selectedRows
+          .reduce((sum, row) => sum + row.amount, 0)
+          .toFixed(2)}`
+      );
     }
   };
 
@@ -80,12 +89,9 @@ const Table3: React.FC<Table3Props> = ({ data = mockInvoiceData }) => {
               onAddClick={handleAddClick}
               onDownloadClick={handleDownloadClick}
             />
-            
+
             {/* Tab Navigation */}
-            <BillingTabs
-              activeTab={activeTab}
-              onTabChange={handleTabChange}
-            />
+            <BillingTabs activeTab={activeTab} onTabChange={handleTabChange} />
           </div>
 
           {/* Search and Filter Bar */}
@@ -107,7 +113,7 @@ const Table3: React.FC<Table3Props> = ({ data = mockInvoiceData }) => {
 
         {/* Right side - Pay Bills Sidebar */}
         <div className="w-80">
-          <PayBillsSidebar 
+          <PayBillsSidebar
             selectedInvoices={selectedRows}
             onPaySelected={handlePaySelected}
           />
