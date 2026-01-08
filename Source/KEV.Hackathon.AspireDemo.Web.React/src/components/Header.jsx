@@ -45,6 +45,9 @@ function Header() {
           <NavItem>
             <NavLink tag={Link} to="/claims">Claims</NavLink>
           </NavItem>
+          <NavItem>
+            <NavLink tag={Link} to="/weather">Weather</NavLink>
+          </NavItem>
         </Nav>
         <Nav navbar>
           <UncontrolledDropdown nav inNavbar>
