@@ -1,0 +1,101 @@
+/* Custom styles for AG Grid to match Figma design */
+
+.ag-theme-alpine {
+  --ag-header-background-color: transparent;
+  --ag-header-foreground-color: #64748b;
+  --ag-border-color: #e7eaee;
+  --ag-row-border-color: #e7eaee;
+  --ag-row-height: 54px;
+  --ag-header-height: 59px;
+  --ag-font-family: "Manrope", sans-serif;
+  --ag-font-size: 16px;
+  --ag-foreground-color: #191d23;
+}
+
+.ag-theme-alpine .ag-header {
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+}
+
+.ag-theme-alpine .ag-header-cell {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.ag-theme-alpine .ag-cell {
+  padding-left: 8px;
+  padding-right: 8px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e7eaee;
+}
+
+.ag-theme-alpine .ag-row {
+  background-color: white;
+}
+
+.ag-theme-alpine .ag-row:hover {
+  background-color: #f7f8f9;
+}
+
+.ag-theme-alpine .ag-checkbox-input-wrapper {
+  width: 16px;
+  height: 16px;
+}
+
+.ag-theme-alpine .ag-checkbox-input {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(4, 9, 33, 0.32);
+  border-radius: 2px;
+  background: white;
+  cursor: pointer;
+}
+
+.ag-theme-alpine .ag-checkbox-input:checked {
+  background: #047857;
+  border-color: #047857;
+}
+
+.ag-theme-alpine .ag-checkbox-input:checked::after {
+  content: "✓";
+  color: white;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.ag-theme-alpine .ag-root-wrapper {
+  border: none;
+  border-radius: 4px;
+}
+
+.ag-theme-alpine .ag-center-cols-container {
+  overflow: visible;
+}
+
+/* Custom scrollbar */
+.ag-theme-alpine .ag-body-viewport::-webkit-scrollbar {
+  width: 8px;
+}
+
+.ag-theme-alpine .ag-body-viewport::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.ag-theme-alpine .ag-body-viewport::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.ag-theme-alpine .ag-body-viewport::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
