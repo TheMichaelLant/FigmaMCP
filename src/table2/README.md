@@ -60,11 +60,11 @@ import Table2 from './table2/Table2';
 
 ## Styling
 
-- Uses Tailwind CSS and DaisyUI for styling
+- Uses Tailwind CSS for styling
 - Custom AG Grid theme matching Figma design
 - Manrope font family (as specified in Figma)
 - Color palette matching Figma tokens
 
 ## Navigation
 
-The component is available at `/table2` route and accessible via the "Iteration 2" button on the home page.
+The component is available at `/table2` route and accessible via the "Table 2" button on the home page.
