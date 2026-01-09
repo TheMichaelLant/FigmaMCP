@@ -7,32 +7,42 @@ import Demo4 from "./demo4";
 
 function Home() {
   return (
-    <div className="min-h-screen bg-base-200">
+    <div className="min-h-screen bg-gray-100">
       {/* Hero Section */}
-      <div className="hero min-h-screen bg-gradient-to-br from-primary to-secondary">
-        <div className="hero-content text-center text-neutral-content">
-          <div className="max-w-md">
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-center px-4">
+          <div className="max-w-md mx-auto">
             <h1 className="text-5xl font-bold mb-8">
               Welcome to Component Demos
             </h1>
             <p className="text-lg mb-8">
               Explore our beautiful collection of UI components built with React
-              and daisyUI
+              and Tailwind CSS
             </p>
             <div className="flex flex-col gap-4">
-              <div className="flex gap-4">
-                <Link to="/table1" className="btn btn-accent btn-lg">
-                  Iteration 1
-                </Link>
-                <Link to="/table2" className="btn btn-primary btn-lg">
-                  Iteration 2
-                </Link>
-              </div>
-              <Link to="/table3" className="btn btn-secondary btn-lg">
+              <Link
+                to="/table1"
+                className="px-6 py-3 bg-teal-500 text-white font-semibold rounded-lg hover:bg-teal-600 transition-colors"
+              >
+                Table 1 - HTML Table
+              </Link>
+              <Link
+                to="/table2"
+                className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Table 2 - AG Grid
+              </Link>
+              <Link
+                to="/table3"
+                className="px-6 py-3 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 transition-colors"
+              >
                 Table 3 - Split Layout
               </Link>
-              <Link to="/demo4" className="btn btn-info btn-lg">
-                Demo 4 - Auth Form
+              <Link
+                to="/demo4"
+                className="px-6 py-3 bg-cyan-600 text-white font-semibold rounded-lg hover:bg-cyan-700 transition-colors"
+              >
+                Auth Form
               </Link>
             </div>
           </div>
